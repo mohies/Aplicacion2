@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Participantes con Puntos y Torneos Ganados</title>
+</head>
+<body>
+    <h1>Participantes con más de 100 puntos y al menos un torneo ganado</h1>
+    <ul>
+        {% for participante in participantes %}
+            <li>
+                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - 
+                Torneos Ganados: {{ participante.usuario.clasificacion.torneos_ganados }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

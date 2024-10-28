@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Torneos</title>
+</head>
+<body>
+    <h1>Lista de Torneos</h1>
+    
+    <ul>
+        {% for torneo in torneos %}
+            <li>
+                <h2>{{ torneo.nombre }}</h2>
+                <p>{{ torneo.descripcion }}</p>
+                <h3>Participantes:</h3>
+                <ul>
+                    {% for torneo_participante in torneo.torneoparticipante_set.all %}
+                        <li>
+                            {{ torneo_participante.participante.usuario.nombre }} - 
+                            Puntos: {{ torneo_participante.puntos_obtenidos }} - 
+                            Posición: {{ torneo_participante.posicion_final }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

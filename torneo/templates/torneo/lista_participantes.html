@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Participantes</title>
+</head>
+<body>
+    <h1>Lista de Participantes</h1>
+    {% for participante in participantes %}
+        <p><strong>Nombre:</strong> {{ participante.usuario.nombre }}</p>
+        <p><strong>Puntos Obtenidos:</strong> {{ participante.puntos_obtenidos }}</p>
+        <p><strong>Fecha de Inscripción:</strong> {{ participante.fecha_inscripcion }}</p>
+        <hr>
+
+    {% endfor %}
+    <p><a href="{% url 'index' %}">Volver al inicio</a></p>
+</body>
+</html>

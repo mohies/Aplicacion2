@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Torneos sin Participantes</title>
+</head>
+<body>
+    <h1>Torneos sin Participantes</h1>
+        <ul>
+            {% for torneo in torneos %}
+                <li>{{ torneo.nombre }} - {{ torneo.juego.nombre }}</li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
