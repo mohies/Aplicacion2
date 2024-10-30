@@ -11,7 +11,7 @@
         {% for usuario in usuarios_primeros %}
             <li>
                 {{ usuario.nombre }} - Correo: {{ usuario.correo }}
-                    - Ranking: {{ usuario.clasificacion.ranking }} - Puntos: {{ usuario.clasificacion.puntos }} - Torneos Ganados: {{ usuario.clasificacion.torneos_ganados }}
+                    - Ranking: {{ usuario.jugador.ranking }} - Puntos: {{ usuario.jugador.puntos }} - Torneos Ganados: {{ usuario.jugador.torneos_ganados }}
             </li>
         {% endfor %}
     </ul>

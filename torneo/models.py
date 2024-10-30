@@ -81,7 +81,7 @@ class Espectador(models.Model):
 
     
 class Clasificacion(models.Model):
-    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE) 
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE,related_name="jugador") 
     ranking=models.IntegerField(default=0,blank=False)
     puntos=models.IntegerField(default=0,blank=False)
     torneos_ganados=models.IntegerField(default=0,blank=False)
