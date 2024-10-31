@@ -7,6 +7,9 @@ urlpatterns = [
     path('torneo/lista_participantes',views.lista_participantes,name='lista_participantes'),
     path('usuarios/primeros/', views.lista_usuarios_primeros, name='lista_usuarios_primeros'),
     path('participantes/puntos_y_ganados/', views.participantes_con_puntos_y_ganados, name='participantes_con_puntos_y_ganados'),
-     path('torneos_sin_participantes/', views.torneos_sin_participantes, name='torneos_sin_participantes'),
+    path('torneos_sin_participantes/', views.torneos_sin_participantes, name='torneos_sin_participantes'),
+    path('participantes/consolas/<int:participante_id>/', views.consolas_participantes, name='consolas_participantes'),
+    path('estado/torneojuego/', views.estado_torneojuego, name='estado_torneojuego'), 
+    path('primeros-torneos/', views.primeros_torneos, name='primeros_torneos'),
 
 ]

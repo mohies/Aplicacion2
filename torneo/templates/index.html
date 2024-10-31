@@ -1,18 +1,22 @@
-<!-- torneo/index.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Índice de URLs</title>
-</head>
-<body>
-    <h1>Índice de URLs</h1>
-    <ul>
-        <li><a href="{% url 'lista_torneo' %}">Lista de Torneos</a></li>
-        <li><a href="{% url 'lista_participantes' %}">Ver Lista de Participantes</a></li>
-        <li><a href="{% url 'lista_usuarios_primeros' %}">Ver Clasificación de Usuarios</a></li>
-        <li><a href="{% url 'participantes_con_puntos_y_ganados' %}">Participantes con Puntos y Torneos Ganados</a></li>
-        <li><a href="{% url 'torneos_sin_participantes' %}">Torneos sin participantes</a></li>
-    </ul>
-</body>
-</html>
+    <!-- torneo/index.html -->
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Índice de URLs</title>
+    </head>
+    <body>
+        <h1>Índice de URLs</h1>
+        <ul>
+            <li><a href="{% url 'lista_torneo' %}">Lista de Torneos</a></li>
+            <li><a href="{% url 'lista_participantes' %}">Ver Lista de Participantes</a></li>
+            <li><a href="{% url 'lista_usuarios_primeros' %}">Ver Clasificación de Usuarios</a></li>
+            <li><a href="{% url 'participantes_con_puntos_y_ganados' %}">Participantes con Puntos y Torneos Ganados</a></li>
+            <li><a href="{% url 'torneos_sin_participantes' %}">Torneos sin participantes</a></li>
+            <li><a href="{% url 'consolas_participantes' 5 %}">Total de Consolas por el participante 5</a></li>
+            <li><a href="{% url 'estado_torneojuego' %}">Estado de Torneos de Juegos</a></li>
+            <li><a href="{% url 'primeros_torneos' %}">Primeros torneos</a></li>
+
+        </ul>
+    </body>
+    </html>

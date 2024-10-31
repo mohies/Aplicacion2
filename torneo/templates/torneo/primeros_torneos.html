@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeros Torneos</title>
+</head>
+<body>
+    <h1>Primeros Torneos</h1>
+    <ul>
+        {% for torneo in torneos %}
+            <li>
+                {{ torneo.nombre }} - Fecha de Inicio: {{ torneo.fecha_inicio }}<br>
+                Descripción: {{ torneo.descripcion }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

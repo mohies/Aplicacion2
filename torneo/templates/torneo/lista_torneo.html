@@ -14,7 +14,7 @@
                 <p>{{ torneo.descripcion }}</p>
                 <h3>Participantes:</h3>
                 <ul>
-                    {% for torneo_participante in torneo.torneoparticipante_set.all %}
+                    {% for torneo_participante in torneo.participantes.all %}
                         <li>
                             {{ torneo_participante.participante.usuario.nombre }} - 
                             Puntos: {{ torneo_participante.puntos_obtenidos }} - 

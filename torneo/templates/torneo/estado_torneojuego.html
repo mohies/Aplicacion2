@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Torneos de Juegos</title>
+</head>
+<body>
+
+<h1>Estado de Torneos de Juegos</h1>
+
+
+<h2>Torneos</h2>
+<ul>
+    {% for torneojuego in torneojuegos %}
+        <li>{{ torneojuego.torneo }} - {{torneojuego.juego}} - {{ torneojuego.estado }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

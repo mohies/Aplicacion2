@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from .models import *
-from django.db.models import Prefetch
+from django.db.models import Prefetch,Count,Q
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 #Filtramos una lista de usuarios que esten participando en cada torneo
 def lista_torneo(request):
-    torneos = Torneo.objects.prefetch_related(Prefetch("participantes__usuario")).all() # El sufijo _set se utiliza en Django para acceder a las relaciones inversas de modelos relacionados mediante claves foráneas cuando no se ha especificado un related_name suele ser en los modelos intermedios en relaciones de muchos a muchos.
+    torneos = Torneo.objects.prefetch_related("participantes").all() # El sufijo _set se utiliza en Django para acceder a las relaciones inversas de modelos relacionados mediante claves foráneas cuando no se ha especificado un related_name suele ser en los modelos intermedios en relaciones de muchos a muchos.
     return render(request, 'torneo/lista_torneo.html', {'torneos': torneos})
 
  # Filtramos los participantes con más de 100 puntos obtenidos y los ordenamos por fecha de inscripción de manera descendente
@@ -26,12 +26,28 @@ def participantes_con_puntos_y_ganados(request):
     # Filtro con AND entre puntos de participante y torneos ganados en la clasificación
     participantes = Participante.objects.filter(
         puntos_obtenidos__gt=100,
-        usuario__clasificacion__torneos_ganados__gt=0  # Relación reversa desde Usuario hacia Clasificacion
-    ).prefetch_related(Prefetch('usuario__clasificacion'))
+        usuario__jugador__torneos_ganados__gt=0  # Relación reversa desde Usuario hacia Clasificacion
+    ).prefetch_related("usuario__jugador").select_related("usuario")
     return render(request, 'torneo/participantes_con_puntos_y_ganados.html', {'participantes': participantes})
 
 def torneos_sin_participantes(request):
     # Filtra torneos donde no hay ninguna relación en la tabla intermedia
-    torneos = Torneo.objects.filter(torneoparticipante__participante=None)
-    
+    torneos = Torneo.objects.filter(torneoparticipante=None).all()
+    #al no querer mostrar ningun dato de la tabla participante no es necesario hacer ningun prefetch y luego a la hora de filtrar none tenemos que poner la tabla no un atributo para no tener problemas
     return render(request, 'torneo/torneos_sin_participantes.html', {'torneos': torneos})
+
+
+#Filtra el numero de consolas de los participantes en un torneo
+def consolas_participantes(request,participante_id):
+    participantes = Participante.objects.filter(id=participante_id).aggregate(num_consolas=Count('torneoparticipante__torneo__juegos_torneo__id_consola'))
+    return render(request, 'torneo/consolas_participantes.html', {'total_consolas': participantes})
+
+#Filtra el estado torneo de un juego
+def estado_torneojuego(request):
+    torneojuegos = TorneoJuego.objects.filter(Q(estado="activo") | Q(estado="pendiente")).select_related("torneo","juego") 
+    return render(request, 'torneo/estado_torneojuego.html', {'torneojuegos': torneojuegos})
+
+# Vista para mostrar los primeros 5 torneos por fecha de inicio
+def primeros_torneos(request):
+    torneos = Torneo.objects.order_by('fecha_inicio')[:5]  # Limita a los primeros 5
+    return render(request, 'torneo/primeros_torneos.html', {'torneos': torneos})
