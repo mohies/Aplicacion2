@@ -5,6 +5,11 @@ Este proyecto es una aplicación web diseñada para gestionar torneos de videoju
 La aplicación será una plataforma donde los usuarios pueden organizar y participar en torneos de videojuegos. En este espacio, los jugadores tendrán la oportunidad de crear sus propios torneos en distintas categorías, como deportes, estrategia o acción, y así invitar a otros a unirse. Cada usuario tendrá su perfil personal, donde podrán ver sus estadísticas, historial de participación y logros obtenidos en los torneos. Además, se incluirá una tabla de clasificación que mostrará a los mejores jugadores de cada torneo, fomentando un ambiente competitivo y colaborativo. Todo esto busca ofrecer una experiencia completa y divertida para los amantes de los videojuegos, permitiendo que se conecten y compitan entre sí de manera fácil y accesible.
 
 
+## Índice
+- [Modelos](#modelos)
+- [URLs Disponibles](#urls-disponibles)
+
+
 ## Modelos
 ### 1. Usuario
 - **nombre**: `CharField(max_length=200)` - Nombre del usuario.
