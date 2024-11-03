@@ -13,7 +13,7 @@
 <h2>Torneos</h2>
 <ul>
     {% for torneojuego in torneojuegos %}
-        <li>{{ torneojuego.torneo }} - {{torneojuego.juego}} - {{ torneojuego.estado }} - {{torneojuego.puntos}} - {{torneojuego.fecha_participacion}}</br>
+        <li>{{ torneojuego.torneo }} - {{torneojuego.juego}} - {{ torneojuego.get_estado_display }} - {{torneojuego.puntos}} - {{torneojuego.fecha_participacion}}</br>
         {{torneojuego.torneo.descripcion}} - {{torneojuego.torneo.categoria}} - {{torneojuego.torneo.duracion}} - {{torneojuego.torneo.fecha_inicio}}</li>
     {% endfor %}
 
