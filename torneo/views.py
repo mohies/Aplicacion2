@@ -62,6 +62,8 @@ def espectadores_por_nombre(request, nombre):
     espectadores = Espectador.objects.filter(usuario__nombre__startswith=nombre).select_related('usuario')
     return render(request, 'torneo/espectadores_por_nombre.html', {'espectadores': espectadores, 'nombre': nombre})
 
+
+#Distintos errores de las paginas web
 def mi_error_404(request, exception=None):
     return render(request, 'torneo/errores/404.html', None,None,404)
 def mi_error_400(request, exception=None):
