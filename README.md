@@ -144,7 +144,7 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
   - Uso de **parámetros** en las URLs, incluyendo:
     - Parámetro entero: `/participantes/consolas/<int:participante_id>/`
     - Parámetro de tipo string: `/espectadores/nombre/<str:nombre>/`
-    - URL con `r_path`: `/torneos/<int:torneo_id>/`
+    - URL con `r_path`: `r'^usuarios/noclasificados//?$'`
     - URL con dos parámetros: `/torneo/<int:torneo_id>/participantes/<str:estado>/`
 
 - **Filtros avanzados**:
