@@ -41,7 +41,7 @@ class Torneo(models.Model):
     categoria=models.CharField(max_length=100)
     duracion=models.DurationField()
     fecha_inicio=models.DateField(default=timezone.now)
-    participantes = models.ManyToManyField(Participante, through='TorneoParticipante')
+    participantes = models.ManyToManyField(Participante, through='TorneoParticipante',related_name="participante_torneo")
     
     def __str__(self):
         return self.nombre

@@ -7,8 +7,13 @@ def index(request):
 
 #Filtramos una lista de usuarios que esten participando en cada torneo
 def lista_torneo(request):
-    torneos = Torneo.objects.prefetch_related("participantes").all() # El sufijo _set se utiliza en Django para acceder a las relaciones inversas de modelos relacionados mediante claves foráneas cuando no se ha especificado un related_name suele ser en los modelos intermedios en relaciones de muchos a muchos.
+    # Obtener todos los torneos y sus participantes en una sola consulta
+    torneos = Torneo.objects.prefetch_related(
+        'participantes__usuario'  # Pre-cargar los participantes y sus usuarios
+    ).all()
+    
     return render(request, 'torneo/lista_torneo.html', {'torneos': torneos})
+
 
  # Filtramos los participantes con más de 100 puntos obtenidos y los ordenamos por fecha de inscripción de manera descendente
 def lista_participantes(request):
