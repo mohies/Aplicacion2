@@ -8,6 +8,7 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
 ## Índice
 - [Modelos](#modelos)
 - [URLs Disponibles](#urls-disponibles)
+- [Requisitos](#requisitos-cumplidos)
 
 
 ## Modelos
@@ -135,4 +136,34 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
 
 11. **`/espectadores/nombre/<str:nombre>/`**: Espectadores filtrados por nombre.
     - Filtra y muestra espectadores cuyo nombre comienza con un valor específico proporcionado en la URL.
+
+
+## Requisitos Cumplidos
+
+- **URLs disponibles**: Se han implementado un total de 10 URLs que cumplen con las siguientes características:
+  - Uso de **parámetros** en las URLs, incluyendo:
+    - Parámetro entero: `/participantes/consolas/<int:participante_id>/`
+    - Parámetro de tipo string: `/espectadores/nombre/<str:nombre>/`
+    - URL con `r_path`: `/torneos/<int:torneo_id>/`
+    - URL con dos parámetros: `/torneo/<int:torneo_id>/participantes/<str:estado>/`
+
+- **Filtros avanzados**:
+  - **Filtros con AND**: Se filtran participantes con más de 100 puntos que han ganado al menos un torneo.
+  - **Filtros con OR**: Se filtran juegos que están en estado "activo" o "pendiente".
+  - **Aggregate**: Se utiliza `aggregate` para contar el número de consolas asociadas a un participante.
+  - **Relaciones reversas**: Se utilizan filtros para acceder a datos relacionados en las consultas.
+  - **Limitación de resultados**: Se limitan las consultas para mostrar solo los primeros 5 torneos.
+
+- **Optimización de QuerySets**: Se han utilizado técnicas como `prefetch_related` y `select_related` para mejorar la eficiencia de las consultas.
+
+- **Página de índice**: Se ha creado una página de inicio desde donde se puede acceder a todas las funcionalidades de la aplicación.
+
+- **Manejo de errores personalizados**: Se han implementado páginas personalizadas para manejar los siguientes errores:
+  - **404**: Página no encontrada.
+  - **400**: Solicitud incorrecta.
+  - **403**: Acceso denegado.
+  - **500**: Error interno del servidor.
+
+- **Fixtures**: Se ha incluido un fixture con datos de prueba para facilitar la verificación de las funcionalidades de la aplicación. Este se puede cargar utilizando el comando `loaddata`.
+
 
