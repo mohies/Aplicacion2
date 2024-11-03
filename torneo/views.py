@@ -7,11 +7,7 @@ def index(request):
 
 #Filtramos una lista de usuarios que esten participando en cada torneo
 def lista_torneo(request):
-    # Obtener todos los torneos y sus participantes en una sola consulta
-    torneos = Torneo.objects.prefetch_related(
-        'participantes__usuario'  # Pre-cargar los participantes y sus usuarios
-    ).all()
-    
+    torneos = Torneo.objects.prefetch_related('participantes__usuario'   ).all()
     return render(request, 'torneo/lista_torneo.html', {'torneos': torneos})
 
 
