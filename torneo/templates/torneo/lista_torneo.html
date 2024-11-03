@@ -12,6 +12,10 @@
             <li>
                 <h2>{{ torneo.nombre }}</h2>
                 <p>{{ torneo.descripcion }}</p>
+                <p>{{ torneo.categoria }}</p>
+                <p>{{ torneo.duracion }}</p>
+                <p>{{ torneo.fecha_inicio }}</p>
+
                 <h3>Participantes:</h3>
                 <ul>
                     {% for torneo_participante in torneo.participantes.all %}
@@ -19,7 +23,10 @@
                             {{ torneo_participante.participante.usuario.nombre }} - 
                             Puntos: {{ torneo_participante.puntos_obtenidos }} - 
                             Posición: {{ torneo_participante.posicion_final }}
+                            
                         </li>
+                        <li>fecha_inscripcion: {{torneo_participante.fecha_inscripcion}} </li>
+                        <li>tiempo_jugado: {{torneo_participante.tiempo_jugado}} </li>
                     {% endfor %}
                 </ul>
             </li>

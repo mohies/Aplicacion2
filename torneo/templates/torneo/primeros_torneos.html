@@ -11,7 +11,7 @@
         {% for torneo in torneos %}
             <li>
                 {{ torneo.nombre }} - Fecha de Inicio: {{ torneo.fecha_inicio }}<br>
-                Descripción: {{ torneo.descripcion }}
+                Descripción: {{ torneo.descripcion }} - categoria: {{torneo.categoria}} - duracion : {{torneo.duracion}}
             </li>
         {% endfor %}
     </ul>

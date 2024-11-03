@@ -23,3 +23,8 @@ urlpatterns = [
     path('',include('torneo.urls')),
     
 ]
+
+handler404="torneo.views.mi_error_404"
+handler400="torneo.views.mi_error_400"
+handler403="torneo.views.mi_error_403"
+handler500="torneo.views.mi_error_500"

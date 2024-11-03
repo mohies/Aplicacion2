@@ -93,3 +93,41 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
 ## Modelo Entidad-Relación
 ![Modelo Entidad-Relación](img/Modelo_Entidad_Relacion.drawio.png)
 
+
+
+
+## URLs Disponibles
+
+1. **`/`**: Página de inicio.
+   - Muestra un índice general de la aplicación y enlaces a las diferentes funcionalidades disponibles.
+
+2. **`/torneo/lista`**: Lista de torneos.
+   - Filtra y muestra todos los torneos junto con sus participantes. Utiliza `prefetch_related` para optimizar la consulta de datos relacionados.
+
+3. **`/torneo/lista_participantes`**: Participantes destacados.
+   - Muestra una lista de participantes que han obtenido más de 100 puntos, ordenados por fecha de inscripción en orden descendente.
+
+4. **`/usuarios/primeros/`**: Clasificación de usuarios.
+   - Filtra y muestra usuarios que tienen una clasificación en los primeros lugares, utilizando el ranking asociado al modelo `Clasificacion`.
+
+5. **`/participantes/puntos_y_ganados/`**: Participantes con puntos altos y torneos ganados.
+   - Filtra y muestra participantes que han obtenido más de 100 puntos y han ganado al menos un torneo. Utiliza filtros con condiciones AND.
+
+6. **`/participantes/consolas/<int:participante_id>/`**: Consolas de un participante específico.
+   - Muestra el número total de consolas asociadas a un participante específico en un torneo, utilizando `aggregate` para contar los elementos.
+
+7. **`/estado/torneojuego/`**: Estado de los juegos en los torneos.
+   - Filtra y muestra juegos que están en estado "activo" o "pendiente", utilizando condiciones OR en la consulta.
+
+8. **`/primeros-torneos/`**: Primeros torneos.
+   - Muestra los primeros 5 torneos ordenados por fecha de inicio, limitando el resultado a los primeros cinco registros.
+
+9. **`/usuarios/noclasificados/`**: Usuarios no clasificados.
+   - Muestra usuarios que no tienen clasificación asociada, utilizando un filtro para identificar aquellos cuyo campo `jugador` es nulo.
+
+10. **`/torneo/<int:torneo_id>/participantes/<str:estado>/`**: Participantes por torneo y estado.
+    - Muestra los participantes de un torneo específico cuyo estado es determinado. Requiere el ID del torneo y el estado como parámetros.
+
+11. **`/espectadores/nombre/<str:nombre>/`**: Espectadores filtrados por nombre.
+    - Filtra y muestra espectadores cuyo nombre comienza con un valor específico proporcionado en la URL.
+

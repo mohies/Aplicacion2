@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Espectadores por Nombre</title>
+</head>
+<body>
+    <h1>Espectadores que comienzan con "{{ nombre }}"</h1>
+
+    <ul>
+        {% for espectador in espectadores %}
+            <li>
+                {{ espectador.usuario.nombre }} - 
+                {{ espectador.usuario.correo }} - 
+                Nivel de Interés: {{ espectador.nivel_interes }} - 
+                Comentarios: {{ espectador.comentarios }}</br>
+                frecuencia : {{espectador.frecuencia_visitas}}</br>
+                suscripcion: {{espectador.suscripcion}}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Total de espectadores: {{ espectadores.count }}</p> <!-- te devuelve el total-->
+</body>
+</html>

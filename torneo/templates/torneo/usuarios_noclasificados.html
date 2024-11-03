@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios No Clasificados</title>
+</head>
+<body>
+    <h1>Usuarios No Clasificados</h1>
+    <ul>
+        {% for usuario in noclasificados %}
+            <li>{{ usuario.nombre }} ({{ usuario.correo }}) {{usuario.clave_de_acceso}} {{usuario.fecha_registro}}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -9,8 +9,13 @@
     <h1>Lista de Participantes</h1>
     {% for participante in participantes %}
         <p><strong>Nombre:</strong> {{ participante.usuario.nombre }}</p>
+        <p><strong>Correo:</strong> {{ participante.usuario.correo }}</p>
+        <p><strong>clave:</strong> {{ participante.usuario.clave_de_acceso }}</p>
+        <p><strong>fecha registro:</strong> {{ participante.usuario.fecha_registro }}</p>
         <p><strong>Puntos Obtenidos:</strong> {{ participante.puntos_obtenidos }}</p>
         <p><strong>Fecha de Inscripción:</strong> {{ participante.fecha_inscripcion }}</p>
+        <p><strong>posicion final:</strong> {{ participante.posicion_final }}</p>
+        <p><strong>tiempo jugado:</strong> {{ participante.tiempo_jugado }}</p>
         <hr>
 
     {% endfor %}

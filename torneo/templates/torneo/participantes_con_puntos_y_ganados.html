@@ -9,8 +9,9 @@
     <ul>
         {% for participante in participantes %}
             <li>
-                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - 
+                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - posocion: {{participante.posicion_final}} - fecha: {{participante.fecha_inscripcion}} - tiempo {{participante.tiempo_jugado}}
                 Torneos Ganados: {{ participante.usuario.jugador.torneos_ganados }}
+              
             </li>
         {% endfor %}
     </ul>

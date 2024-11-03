@@ -23,18 +23,12 @@ def lista_usuarios_primeros(request):
 
 # Vista que filtra participantes con más de 100 puntos y que hayan ganado al menos un torneo
 def participantes_con_puntos_y_ganados(request):
-    # Filtro con AND entre puntos de participante y torneos ganados en la clasificación
+    # Filtro con AND entre puntos de participante y torneos ganados en la clasificación es implicito
     participantes = Participante.objects.filter(
         puntos_obtenidos__gt=100,
         usuario__jugador__torneos_ganados__gt=0  # Relación reversa desde Usuario hacia Clasificacion
     ).prefetch_related("usuario__jugador").select_related("usuario")
     return render(request, 'torneo/participantes_con_puntos_y_ganados.html', {'participantes': participantes})
-
-def torneos_sin_participantes(request):
-    # Filtra torneos donde no hay ninguna relación en la tabla intermedia
-    torneos = Torneo.objects.filter(torneoparticipante=None).all()
-    #al no querer mostrar ningun dato de la tabla participante no es necesario hacer ningun prefetch y luego a la hora de filtrar none tenemos que poner la tabla no un atributo para no tener problemas
-    return render(request, 'torneo/torneos_sin_participantes.html', {'torneos': torneos})
 
 
 #Filtra el numero de consolas de los participantes en un torneo
@@ -51,3 +45,28 @@ def estado_torneojuego(request):
 def primeros_torneos(request):
     torneos = Torneo.objects.order_by('fecha_inicio')[:5]  # Limita a los primeros 5
     return render(request, 'torneo/primeros_torneos.html', {'torneos': torneos})
+
+#Vista que muestra los usuarios que no tienen clasificación.
+def usuarios_noclasificados(request):
+    noclasificados=Usuario.objects.filter(jugador=None)
+    return render(request, 'torneo/usuarios_noclasificados.html', {'noclasificados': noclasificados})
+
+#Muestra los participantes de un torneo específico con un estado determinado.
+def participantes_por_torneo_y_estado(request, torneo_id, estado):
+    participantes = Participante.objects.filter(torneoparticipante__torneo_id=torneo_id,torneoparticipante__torneo__torneojuego__estado=estado).select_related('usuario') 
+    
+    return render(request, 'torneo/participantes_por_torneo_y_estado.html', {'participantes': participantes})
+   
+# Filtra espectadores cuyo nombre empieza con el valor de 'nombre'
+def espectadores_por_nombre(request, nombre):
+    espectadores = Espectador.objects.filter(usuario__nombre__startswith=nombre).select_related('usuario')
+    return render(request, 'torneo/espectadores_por_nombre.html', {'espectadores': espectadores, 'nombre': nombre})
+
+def mi_error_404(request, exception=None):
+    return render(request, 'torneo/errores/404.html', None,None,404)
+def mi_error_400(request, exception=None):
+    return render(request, 'torneo/errores/400.html', None,None,400)
+def mi_error_403(request, exception=None):
+    return render(request, 'torneo/errores/403.html', None,None,403)
+def mi_error_500(request, exception=None):
+    return render(request, 'torneo/errores/403.html', None,None,500)

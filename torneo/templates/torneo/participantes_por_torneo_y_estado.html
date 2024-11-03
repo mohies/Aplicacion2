@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Participantes por Torneo y Estado</title>
+</head>
+<body>
+    <h1>Participantes del Torneo</h1>
+
+    <ul>
+        {% for participante in participantes %}
+            <li>
+                {{ participante.usuario.nombre }} - 
+                {{ participante.usuario.correo }} - 
+                {{participante.usuario.clave_de_acceso}} -
+                {{participante.usuario.fehca_registro}} -
+                Puntos: {{ participante.puntos_obtenidos }} - 
+                Inscrito el: {{ participante.fecha_inscripcion }}
+                {{participante.tiempo_jugado}}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <p>Total de participantes: {{ participantes.count }}</p> <!-- Esto es para que te cuente los participantes -->
+</body>
+</html>
