@@ -1,23 +1,20 @@
-    <!-- torneo/index.html -->
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Índice de URLs</title>
-    </head>
-    <body>
-        <h1>Índice de URLs</h1>
-        <ul>
-            <li><a href="{% url 'lista_torneo' %}">Lista de Torneos</a></li>
-            <li><a href="{% url 'lista_participantes' %}">Ver Lista de Participantes</a></li>
-            <li><a href="{% url 'lista_usuarios_primeros' %}">Ver Clasificación de Usuarios</a></li>
-            <li><a href="{% url 'participantes_con_puntos_y_ganados' %}">Participantes con Puntos y Torneos Ganados</a></li>
-            <li><a href="{% url 'consolas_participantes' 5 %}">Total de Consolas por el participante 5</a></li>
-            <li><a href="{% url 'estado_torneojuego' %}">Estado de Torneos de Juegos</a></li>
-            <li><a href="{% url 'primeros_torneos' %}">Primeros torneos</a></li>
-            <li><a href="{% url 'usuarios_noclasificados' %}">Usuarios No Clasificados</a></li> 
-            <li><a href="{% url 'participantes_por_torneo_y_estado' 1 'activo' %}">Participantes del Torneo 1 con Estado Activo</a></li>
-            <li><a href="{% url 'espectadores_por_nombre' 'C' %}">Espectadores que comienzan con "C"</a></li>
-        </ul>
-    </body>
-    </html>
+{% extends 'torneo/base.html' %}
+
+{% block content %}
+    <h1>Bienvenido al Gestor de Torneos</h1>
+    <p>En este sistema podrás gestionar torneos, participantes y usuarios.</p>
+
+    <h2>Listado de enlaces</h2>
+    <ul>
+       <li><a href="{% url 'lista_torneo' %}">Ver la lista de torneos</a></li>
+       <li><a href="{% url 'lista_participantes' %}">Ver la lista de participantes</a></li>
+       <li><a href="{% url 'lista_usuarios_primeros' %}">Ver usuarios destacados</a></li>
+       <li><a href="{% url 'participantes_con_puntos_y_ganados' %}">Participantes destacados</a></li>
+       <li><a href="{% url 'usuarios_noclasificados' %}">Ver usuarios no clasificados</a></li>
+       <li><a href="{% url 'primeros_torneos' %}">Explorar los primeros torneos</a></li>
+       <li><a href="{% url 'consolas_participantes' 5 %}">Consolas asociadas al participante 5</a></li>
+       <li><a href="{% url 'participantes_por_torneo_y_estado' 1 'activo' %}">Participantes activos del torneo 1</a></li>
+       <li><a href="{% url 'estado_torneojuego' %}">Estado de los torneos de juego</a></li>
+       <li><a href="{% url 'espectadores_por_nombre' 'C' %}">Espectadores que comienzan con "C"</a></li>
+    </ul>
+{% endblock %}

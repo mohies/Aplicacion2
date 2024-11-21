@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estado de Torneos de Juegos</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
 
-<h1>Estado de Torneos de Juegos</h1>
+{% block title %}Estado de Torneos de Juegos{% endblock %}
 
+{% block content %}
+    <h1>Estado de Torneos de Juegos</h1>
 
-<h2>Torneos</h2>
-<ul>
-    {% for torneojuego in torneojuegos %}
-        <li>{{ torneojuego.torneo }} - {{torneojuego.juego}} - {{ torneojuego.get_estado_display }} - {{torneojuego.puntos}} - {{torneojuego.fecha_participacion}}</br>
-        {{torneojuego.torneo.descripcion}} - {{torneojuego.torneo.categoria}} - {{torneojuego.torneo.duracion}} - {{torneojuego.torneo.fecha_inicio}}</li>
-    {% endfor %}
-
-
-</ul>
-
-</body>
-</html>
+    <h2>Torneos</h2>
+    <ul>
+        {% for torneojuego in torneojuegos %}
+            <li>
+                {{ torneojuego.torneo }} - {{ torneojuego.juego }} - {{ torneojuego.get_estado_display }} - 
+                {{ torneojuego.puntos }} - {{ torneojuego.fecha_participacion }}<br>
+                {{ torneojuego.torneo.descripcion }} - {{ torneojuego.torneo.categoria }} - 
+                {{ torneojuego.torneo.duracion }} - {{ torneojuego.torneo.fecha_inicio }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

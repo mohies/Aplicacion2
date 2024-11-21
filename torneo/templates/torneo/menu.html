@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'lista_torneo' %}">Lista de Torneos</a></li>
+            <li><a href="{% url 'lista_participantes' %}">Lista de Participantes</a></li>
+            <li><a href="{% url 'lista_usuarios_primeros' %}">Usuarios en Primeros Lugares</a></li>
+            <li><a href="{% url 'participantes_con_puntos_y_ganados' %}">Participantes Destacados</a></li>
+            <li><a href="{% url 'usuarios_noclasificados' %}">Usuarios No Clasificados</a></li>
+            <li><a href="{% url 'primeros_torneos' %}">Primeros Torneos</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

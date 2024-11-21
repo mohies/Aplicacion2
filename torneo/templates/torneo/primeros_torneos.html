@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeros Torneos</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
+
+{% block title %}Primeros Torneos{% endblock %}
+
+{% block content %}
     <h1>Primeros Torneos</h1>
     <ul>
         {% for torneo in torneos %}
             <li>
                 {{ torneo.nombre }} - Fecha de Inicio: {{ torneo.fecha_inicio }}<br>
-                Descripción: {{ torneo.descripcion }} - categoria: {{torneo.categoria}} - duracion : {{torneo.duracion}}
+                Descripción: {{ torneo.descripcion }} - Categoría: {{ torneo.categoria }} - 
+                Duración: {{ torneo.duracion }}
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

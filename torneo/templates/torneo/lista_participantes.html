@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Participantes</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
+
+{% block title %}Lista de Participantes{% endblock %}
+
+{% block content %}
     <h1>Lista de Participantes</h1>
     {% for participante in participantes %}
         <p><strong>Nombre:</strong> {{ participante.usuario.nombre }}</p>
         <p><strong>Correo:</strong> {{ participante.usuario.correo }}</p>
-        <p><strong>clave:</strong> {{ participante.usuario.clave_de_acceso }}</p>
-        <p><strong>fecha registro:</strong> {{ participante.usuario.fecha_registro }}</p>
+        <p><strong>Clave:</strong> {{ participante.usuario.clave_de_acceso }}</p>
+        <p><strong>Fecha de Registro:</strong> {{ participante.usuario.fecha_registro }}</p>
         <p><strong>Puntos Obtenidos:</strong> {{ participante.puntos_obtenidos }}</p>
         <p><strong>Fecha de Inscripción:</strong> {{ participante.fecha_inscripcion }}</p>
-        <p><strong>posicion final:</strong> {{ participante.posicion_final }}</p>
-        <p><strong>tiempo jugado:</strong> {{ participante.tiempo_jugado }}</p>
+        <p><strong>Posición Final:</strong> {{ participante.posicion_final }}</p>
+        <p><strong>Tiempo Jugado:</strong> {{ participante.tiempo_jugado }}</p>
         <hr>
-
     {% endfor %}
     <p><a href="{% url 'index' %}">Volver al inicio</a></p>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Espectadores por Nombre</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
+
+{% block title %}Espectadores por Nombre{% endblock %}
+
+{% block content %}
     <h1>Espectadores que comienzan con "{{ nombre }}"</h1>
 
     <ul>
@@ -13,13 +11,12 @@
                 {{ espectador.usuario.nombre }} - 
                 {{ espectador.usuario.correo }} - 
                 Nivel de Interés: {{ espectador.nivel_interes }} - 
-                Comentarios: {{ espectador.comentarios }}</br>
-                frecuencia : {{espectador.frecuencia_visitas}}</br>
-                suscripcion: {{espectador.suscripcion}}
+                Comentarios: {{ espectador.comentarios }}<br>
+                Frecuencia: {{ espectador.frecuencia_visitas }}<br>
+                Suscripción: {{ espectador.suscripcion }}
             </li>
         {% endfor %}
     </ul>
 
-    <p>Total de espectadores: {{ espectadores.count }}</p> <!-- te devuelve el total-->
-</body>
-</html>
+    <p>Total de espectadores: {{ espectadores.count }}</p> 
+{% endblock %}

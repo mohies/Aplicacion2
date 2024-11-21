@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios en Primeros Lugares</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
+
+{% block title %}Lista de Usuarios en Primeros Lugares{% endblock %}
+
+{% block content %}
     <h1>Lista de Usuarios en Primeros Lugares</h1>
     <ul>
         {% for usuario in usuarios_primeros %}
             <li>
-                {{ usuario.nombre }} - Correo: {{ usuario.correo }} {{usuario.clave_de_acceso}} - {{usuario.fecha_registro}}
-                    - Ranking: {{ usuario.jugador.ranking }} - Puntos: {{ usuario.jugador.puntos }} - Torneos Ganados: {{ usuario.jugador.torneos_ganados }}
+                {{ usuario.nombre }} - Correo: {{ usuario.correo }} {{ usuario.clave_de_acceso }} - 
+                {{ usuario.fecha_registro }} - Ranking: {{ usuario.jugador.ranking }} - 
+                Puntos: {{ usuario.jugador.puntos }} - Torneos Ganados: {{ usuario.jugador.torneos_ganados }}
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

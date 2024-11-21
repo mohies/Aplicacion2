@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Participantes con Puntos y Torneos Ganados</title>
-</head>
-<body>
+{% extends 'torneo/base.html' %}
+
+{% block title %}Participantes con Puntos y Torneos Ganados{% endblock %}
+
+{% block content %}
     <h1>Participantes con más de 100 puntos y al menos un torneo ganado</h1>
     <ul>
         {% for participante in participantes %}
             <li>
-                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - posocion: {{participante.posicion_final}} - fecha: {{participante.fecha_inscripcion}} - tiempo {{participante.tiempo_jugado}}
+                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - 
+                Posición: {{ participante.posicion_final }} - Fecha de Inscripción: {{ participante.fecha_inscripcion }} - 
+                Tiempo Jugado: {{ participante.tiempo_jugado }}<br>
                 Torneos Ganados: {{ participante.usuario.jugador.torneos_ganados }}
-              
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
