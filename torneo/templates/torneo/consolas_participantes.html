@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Total de Consolas por Participantes</title>
 <body>
-    <div class="container">
-        <h1>Total de Consolas por Participantes</h1>
-        
-        <p>Total de consolas: {{ total_consolas.num_consolas }}</p>
-        
-    </div>
+    {% for participante in participantes %}
+  <p>{{ participante.usuario.nombre }} tiene {{ participante.num_consolas }} consolas asociadas.</p>
+  {% if participante.num_consolas == 0 %}
+    <p>No hay consolas asociadas a este participante.</p>
+  {% endif %}
+{% empty %}
+  <p>No se encontraron participantes con este ID.</p>
+{% endfor %}
+
 </body>
 </html>

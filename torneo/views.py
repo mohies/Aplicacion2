@@ -33,9 +33,12 @@ def participantes_con_puntos_y_ganados(request):
 
 
 #Filtra el numero de consolas de un participante en un torneo
-def consolas_participantes(request,participante_id):
-    participantes = Participante.objects.filter(id=participante_id).aggregate(num_consolas=Count('torneoparticipante__torneo__juegos_torneo__id_consola'))
-    return render(request, 'torneo/consolas_participantes.html', {'total_consolas': participantes})
+def consolas_participantes(request, participante_id):
+    participantes = Participante.objects.filter(id=participante_id).annotate(
+        num_consolas=Count('torneoparticipante__torneo__juegos_torneo__id_consola')
+    )
+
+    return render(request, 'torneo/consolas_participantes.html', {'participantes': participantes})
 
 #Filtra el estado torneo de un juego
 def estado_torneojuego(request):
