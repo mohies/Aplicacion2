@@ -49,7 +49,7 @@ def primeros_torneos(request):
 
 #Vista que muestra los usuarios que no tienen clasificación.
 def usuarios_noclasificados(request):
-    noclasificados=Usuario.objects.filter(jugador=None)
+    noclasificados = Usuario.objects.filter(participante__participanteequipo=None)
     return render(request, 'torneo/usuarios_noclasificados.html', {'noclasificados': noclasificados})
 
 #Muestra los participantes de un torneo específico con un estado determinado.
@@ -73,3 +73,4 @@ def mi_error_403(request, exception=None):
     return render(request, 'torneo/errores/403.html', None,None,403)
 def mi_error_500(request, exception=None):
     return render(request, 'torneo/errores/403.html', None,None,500)
+
