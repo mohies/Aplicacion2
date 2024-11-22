@@ -1,6 +1,13 @@
 <li>
-    Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos|add:1000 }} - 
-    Posición: {{ participante.posicion_final }} - Fecha de Inscripción: {{ participante.fecha_inscripcion|date:"d M Y"  }} - 
+    Correo: {{ participante.usuario.correo }} - 
+    Puntos Obtenidos: {{ participante.puntos_obtenidos|add:1000 }} - 
+
+    {% if participante.puntos_obtenidos <= 7000 %}
+        <p><strong>{{ participante.usuario.nombre }}</strong> tiene 7000 puntos o menos.</p>
+    {% endif %}
+    
+    Posición: {{ participante.posicion_final }} - 
+    Fecha de Inscripción: {{ participante.fecha_inscripcion|date:"d M Y" }} - 
     Tiempo Jugado: {{ participante.tiempo_jugado|floatformat:2 }}<br>
     Torneos Ganados: {{ participante.usuario.jugador.torneos_ganados }}
 </li>

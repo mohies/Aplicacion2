@@ -216,86 +216,30 @@ Este proyecto utiliza varios **template tags** de Django para gestionar el conte
 
 
 
-# Operadores Utilizados en el Proyecto
+## Operadores Utilizados en el Proyecto
 
-Este proyecto utiliza varios **operadores** de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
+Este proyecto utiliza varios operadores de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
 
-## 1. **Operador de Igualdad (`==`)**
+## Operadores Utilizados en el Proyecto
 
-- **Propósito**: Compara si dos valores son **exactamente iguales**.
+Este proyecto utiliza varios operadores de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
+
+### 1. **Operador Menor o Igual que (`<=`)**
+
+- **Propósito**: Compara si un valor es **menor o igual** que otro.
   
-- **Uso**: Se usa para verificar si el nombre de un participante es igual a un valor específico.
+- **Uso**: Este operador se usa para verificar si los puntos obtenidos por un participante son **menores o iguales** a un valor específico, y mostrar un mensaje acorde.
 
-- **Archivos donde se usa**:
-  - `lista_participantes.html`: Verifica si el nombre del participante es igual a "Pepe".
+- **Ejemplo de uso**:
+  
+  En **`lista_participantes.html`**, el operador `<=` se utiliza para mostrar un mensaje si un participante tiene **7000 puntos o menos**:
 
-    ```html
-    {% if participante.usuario.nombre == 'Pepe' %}
-        <p>{{ participante.usuario.nombre }} está en la lista de usuarios VIP.</p>
-    {% endif %}
-    ```
+  ```html
+  {% if participante.puntos_obtenidos <= 7000 %}
+      <p><strong>{{ participante.usuario.nombre }}</strong> tiene 7000 puntos o menos.</p>
+  {% endif %}
 
-## 2. **Operador de Desigualdad (`!=`)**
 
-- **Propósito**: Compara si dos valores son **diferentes**.
-
-- **Uso**: Se usa para mostrar un mensaje si el nombre del participante no es igual a "Pepe".
-
-- **Archivos donde se usa**:
-  - `lista_participantes.html`: Muestra un mensaje si el nombre del participante es diferente a "Pepe".
-
-    ```html
-    {% if participante.usuario.nombre != 'Pepe' %}
-        <p>{{ participante.usuario.nombre }} no está en la lista de usuarios VIP.</p>
-    {% endif %}
-    ```
-
-## 3. **Operadores de Comparación (`>`, `<`, `>=`, `<=`)**
-
-- **Propósito**: Compara si un valor es **mayor** o **menor** que otro.
-
-- **Uso**: Se utiliza para verificar si los puntos obtenidos de un participante son mayores o menores que un valor específico.
-
-- **Archivos donde se usa**:
-  - `lista_participantes.html`: Muestra un mensaje si el participante tiene más o menos de 10,000 puntos.
-
-    ```html
-    {% if participante.puntos_obtenidos > 10000 %}
-        <p style="color: green;"><strong>¡Gran puntaje!</strong></p>
-    {% elif participante.puntos_obtenidos < 10000 %}
-        <p style="color: red;"><strong>¡Puede mejorar!</strong></p>
-    {% endif %}
-    ```
-
-## 4. **Operador `for` + `if`**
-
-- **Propósito**: Permite recorrer una lista de valores y hacer comparaciones dentro del bucle.
-
-- **Uso**: En lugar de usar `in` directamente, puedes iterar sobre una lista y hacer una comparación en cada iteración.
-
-- **Archivos donde se usa**:
-  - `lista_participantes.html`: Verifica si el nombre del participante está en una lista de usuarios VIP.
-
-    ```html
-    {% for nombre in ['Pepe', 'Juan', 'Ana'] %}
-        {% if participante.usuario.nombre == nombre %}
-            <p>{{ participante.usuario.nombre }} está en la lista de usuarios VIP.</p>
-        {% endif %}
-    {% endfor %}
-    ```
-
-## 5. **Operador `default`**
-
-- **Propósito**: Proporciona un valor predeterminado si una variable no está definida o es `None`.
-
-- **Uso**: Se utiliza para mostrar un valor por defecto cuando el nombre del participante no está disponible.
-
-- **Archivos donde se usa**:
-  - `lista_participantes.html`: Muestra "Nombre no disponible" si el nombre del participante no está definido.
-
-    ```html
-    <p><strong>Nombre:</strong> {{ participante.usuario.nombre|default:"Nombre no disponible" }}</p>
-    ```
 
 
 
