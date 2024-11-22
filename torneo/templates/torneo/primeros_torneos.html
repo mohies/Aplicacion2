@@ -4,13 +4,16 @@
 
 {% block content %}
     <h1>Primeros Torneos</h1>
-    <ul>
-        {% for torneo in torneos %}
-            <li>
-                {{ torneo.nombre }} - Fecha de Inicio: {{ torneo.fecha_inicio }}<br>
-                Descripción: {{ torneo.descripcion }} - Categoría: {{ torneo.categoria }} - 
-                Duración: {{ torneo.duracion }}
-            </li>
-        {% endfor %}
-    </ul>
+
+    {% if torneos %}
+        <ul>
+            {% for torneo in torneos %}
+                {% include 'torneo/items/primerotorneo.html' %}
+            {% empty %}
+                <li>No hay torneos disponibles en este momento.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron torneos para mostrar.</p>
+    {% endif %}
 {% endblock %}

@@ -6,12 +6,7 @@
     <h1>Participantes con más de 100 puntos y al menos un torneo ganado</h1>
     <ul>
         {% for participante in participantes %}
-            <li>
-                Correo: {{ participante.usuario.correo }} - Puntos Obtenidos: {{ participante.puntos_obtenidos }} - 
-                Posición: {{ participante.posicion_final }} - Fecha de Inscripción: {{ participante.fecha_inscripcion }} - 
-                Tiempo Jugado: {{ participante.tiempo_jugado }}<br>
-                Torneos Ganados: {{ participante.usuario.jugador.torneos_ganados }}
-            </li>
+            {% include 'torneo/items/_participante_ganador.html' %}
         {% endfor %}
     </ul>
 {% endblock %}

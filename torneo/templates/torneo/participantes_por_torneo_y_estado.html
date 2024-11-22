@@ -4,20 +4,11 @@
 
 {% block content %}
     <h1>Participantes del Torneo</h1>
-
     <ul>
         {% for participante in participantes %}
-            <li>
-                {{ participante.usuario.nombre }} - 
-                {{ participante.usuario.correo }} - 
-                {{ participante.usuario.clave_de_acceso }} - 
-                {{ participante.usuario.fecha_registro }} - 
-                Puntos: {{ participante.puntos_obtenidos }} - 
-                Inscrito el: {{ participante.fecha_inscripcion }}<br>
-                Tiempo Jugado: {{ participante.tiempo_jugado }}
-            </li>
+            {% include 'torneo/items/participantestorneoyestado.html' %}
         {% endfor %}
     </ul>
-    
-    <p>Total de participantes: {{ participantes.count }}</p> <!-- Esto es para que te cuente los participantes -->
+    <p><strong>Número de participantes:</strong> {{ participantes|length }}</p>
+
 {% endblock %}

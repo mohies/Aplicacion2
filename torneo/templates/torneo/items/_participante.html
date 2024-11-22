@@ -1,0 +1,11 @@
+{% extends 'torneo/base.html' %}
+
+{% block title %}Lista de Participantes{% endblock %}
+
+{% block content %}
+    <h1>Lista de Participantes</h1>
+    {% for participante in participantes %}
+        {% include 'torneo/_participante.html' %}
+    {% endfor %}
+    <p><a href="{% url 'index' %}">Volver al inicio</a></p>
+{% endblock %}

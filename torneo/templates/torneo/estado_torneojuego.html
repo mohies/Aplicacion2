@@ -4,16 +4,21 @@
 
 {% block content %}
     <h1>Estado de Torneos de Juegos</h1>
-
-    <h2>Torneos</h2>
     <ul>
         {% for torneojuego in torneojuegos %}
             <li>
-                {{ torneojuego.torneo }} - {{ torneojuego.juego }} - {{ torneojuego.get_estado_display }} - 
-                {{ torneojuego.puntos }} - {{ torneojuego.fecha_participacion }}<br>
-                {{ torneojuego.torneo.descripcion }} - {{ torneojuego.torneo.categoria }} - 
-                {{ torneojuego.torneo.duracion }} - {{ torneojuego.torneo.fecha_inicio }}
+                <strong>Torneo:</strong> {{ torneojuego.torneo.nombre }} - 
+                <strong>Juego:</strong> {{ torneojuego.juego.nombre }} <br>
+                {% if torneojuego.estado == "activo" %}
+                    <span style="color: green;">Estado: Activo</span>
+                {% endif %}
+                {% if torneojuego.estado != "activo" %}
+                <span style="color: red;">Estado: Inactivo</span>
+                {% endif %} 
+             
             </li>
+        {% empty %}
+            <p>No hay torneos en curso actualmente.</p>
         {% endfor %}
     </ul>
 {% endblock %}

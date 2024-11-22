@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Total de Consolas por Participantes</h1>
     {% for participante in participantes %}
-        <p>{{ participante.usuario.nombre }} tiene {{ participante.num_consolas }} consolas asociadas.</p>
+        <p>{{ participante.usuario.nombre|upper }} tiene {{ participante.num_consolas }} consolas asociadas.</p>
         {% if participante.num_consolas == 0 %}
             <p>No hay consolas asociadas a este participante.</p>
         {% endif %}

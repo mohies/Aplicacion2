@@ -1,0 +1,14 @@
+<li>
+    {{ participante.usuario.nombre }} - 
+    {{ participante.usuario.correo }} - 
+    {{ participante.usuario.clave_de_acceso }} - 
+    {{ participante.usuario.fecha_registro|date:"d M Y"  }} - 
+    Puntos: {{ participante.puntos_obtenidos }} -
+    
+    {% if participante.puntos_obtenidos == 22561 %}
+        <strong>Este participante tiene 22561 puntos.</strong>
+    {% endif %}
+
+    Inscrito el: {{ participante.fecha_inscripcion|date:"d M Y"  }}<br>
+    Tiempo Jugado: {{ participante.tiempo_jugado }}
+</li>

@@ -4,14 +4,15 @@
 
 {% block content %}
     <h1>Usuarios No Clasificados</h1>
-    
-    <ul>
-        {% for usuario in noclasificados %}
-            <li>
-                <strong>Nombre:</strong> {{ usuario.nombre }} <br>
-                <strong>Correo:</strong> {{ usuario.correo }} <br>
-                <strong>Fecha de Registro:</strong> {{ usuario.fecha_registro }} <br>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if noclasificados %}
+        <ul>
+            {% for usuario in noclasificados %}
+                {% include 'torneo/items/usuarioclasificado.html' %}
+            {% empty %}
+                <li>No hay usuarios no clasificados registrados.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontró información sobre usuarios no clasificados.</p>
+    {% endif %}
 {% endblock %}

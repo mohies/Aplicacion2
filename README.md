@@ -1,17 +1,18 @@
 # Proyecto de Aplicación Web de Torneos de Videojuegos
 
 ## Descripción
-Este proyecto es una aplicación web diseñada para gestionar torneos de videojuegos, donde los usuarios pueden registrarse, participar en torneos y seguir su progreso a través de clasificaciones y perfiles de jugador.
+Este proyecto es una aplicación web diseñada para gestionar torneos de videojuegos, donde los usuarios pueden registrarse, participar en torneos y seguir su progreso a través de clasificaciones y perfiles de jugador.  
 La aplicación será una plataforma donde los usuarios pueden organizar y participar en torneos de videojuegos. En este espacio, los jugadores tendrán la oportunidad de crear sus propios torneos en distintas categorías, como deportes, estrategia o acción, y así invitar a otros a unirse. Cada usuario tendrá su perfil personal, donde podrán ver sus estadísticas, historial de participación y logros obtenidos en los torneos. Además, se incluirá una tabla de clasificación que mostrará a los mejores jugadores de cada torneo, fomentando un ambiente competitivo y colaborativo. Todo esto busca ofrecer una experiencia completa y divertida para los amantes de los videojuegos, permitiendo que se conecten y compitan entre sí de manera fácil y accesible.
-
 
 ## Índice
 - [Modelos](#modelos)
 - [URLs Disponibles](#urls-disponibles)
-- [Requisitos](#requisitos-cumplidos)
-
+- [Requisitos Cumplidos](#requisitos-cumplidos)
+- [Template Tags Utilizados](#template-tags-utilizados-en-el-proyecto)
+- [Operadores Utilizados](#operadores-utilizados-en-el-proyecto)
 
 ## Modelos
+
 ### 1. Usuario
 - **nombre**: `CharField(max_length=200)` - Nombre del usuario.
 - **correo**: `EmailField(max_length=200)` - Correo electrónico del usuario.
@@ -96,12 +97,6 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
 - **puntos_obtenidos**: `IntegerField(default=0)` - Puntos obtenidos en el torneo.
 - **posicion_final**: `IntegerField(default=0)` - Posición final en el torneo.
 
-## Modelo Entidad-Relación
-![Modelo Entidad-Relación](img/Modelo_Entidad_Relacion.drawio.png)
-
-
-
-
 ## URLs Disponibles
 
 1. **`/`**: Página de inicio.
@@ -137,7 +132,6 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
 11. **`/espectadores/nombre/<str:nombre>/`**: Espectadores filtrados por nombre.
     - Filtra y muestra espectadores cuyo nombre comienza con un valor específico proporcionado en la URL.
 
-
 ## Requisitos Cumplidos
 
 - **URLs disponibles**: Se han implementado un total de 10 URLs que cumplen con las siguientes características:
@@ -165,5 +159,145 @@ La aplicación será una plataforma donde los usuarios pueden organizar y partic
   - **500**: Error interno del servidor.
 
 - **Fixtures**: Se ha incluido un fixture con datos de prueba para facilitar la verificación de las funcionalidades de la aplicación. Este se puede cargar utilizando el comando `loaddata`.
+
+# Template Tags Utilizados en el Proyecto
+
+Este proyecto utiliza varios **template tags** de Django para gestionar el contenido dinámico en las plantillas. A continuación se describen los tags utilizados, su propósito y en qué plantillas específicas se encuentran.
+
+## 1. `{% for %}` y `{% empty %}`
+
+- **Propósito**: 
+  - `{% for %}` se usa para iterar sobre una lista de objetos.
+  - `{% empty %}` muestra contenido si la lista está vacía.
+  
+- **Archivos donde se usan**:
+  - `lista_participantes.html`: Itera sobre los participantes y usa `{% empty %}` para manejar el caso donde no haya participantes.
+  - `estado_torneos_juegos.html`: Itera sobre los torneos de juegos y muestra un mensaje si no hay torneos en curso.
+  - `lista_torneos.html`: Itera sobre los torneos y sus participantes, mostrando un mensaje si no hay participantes.
+  - `usuarios_no_clasificados.html`: Itera sobre los usuarios no clasificados y muestra un mensaje si no hay usuarios.
+
+## 2. `{% if %}` y `{% else %}`
+
+- **Propósito**: 
+  - `{% if %}` se usa para hacer verificaciones condicionales, mientras que `{% else %}` se ejecuta cuando la condición no se cumple.
+  
+- **Archivos donde se usan**:
+  - `lista_participantes.html`: Para verificar si un participante tiene un puntaje alto o bajo.
+  - `estado_torneos_juegos.html`: Para verificar si un torneo está activo o inactivo.
+  - `usuarios_no_clasificados.html`: Para mostrar un mensaje si no hay usuarios no clasificados.
+
+## 3. `{% include %}`
+
+- **Propósito**: 
+  - Permite incluir una plantilla parcial dentro de otra. Es útil para modularizar el código y evitar la repetición.
+  
+- **Archivos donde se usan**:
+  - `lista_participantes.html`: Incluye la plantilla parcial `_participante.html` para mostrar los detalles de cada participante.
+  - `estado_torneos_juegos.html`: Incluye plantillas parciales para cada detalle de torneo.
+  - `usuarios_no_clasificados.html`: Incluye la plantilla parcial `_usuario_clasificado.html` para mostrar los detalles de un usuario no clasificado.
+
+## 4. `{% url %}`
+
+- **Propósito**: 
+  - Genera una URL dinámica a partir de un nombre de vista configurado en `urls.py`.
+  
+- **Archivos donde se usan**:
+  - `lista_torneos.html`: Para generar un enlace a la página de detalles de cada torneo.
+  - `usuarios_no_clasificados.html`: Para generar un enlace hacia una página de detalles de usuario no clasificado.
+
+## 5. `{% empty %}`
+
+- **Propósito**: 
+  - Muestra contenido si el bloque `{% for %}` no encuentra elementos en la lista.
+  
+- **Archivos donde se usan**:
+  - `lista_participantes.html`: Muestra un mensaje si no hay participantes.
+  - `estado_torneos_juegos.html`: Muestra un mensaje si no hay torneos en curso.
+
+
+
+# Operadores Utilizados en el Proyecto
+
+Este proyecto utiliza varios **operadores** de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
+
+## 1. **Operador de Igualdad (`==`)**
+
+- **Propósito**: Compara si dos valores son **exactamente iguales**.
+  
+- **Uso**: Se usa para verificar si el nombre de un participante es igual a un valor específico.
+
+- **Archivos donde se usa**:
+  - `lista_participantes.html`: Verifica si el nombre del participante es igual a "Pepe".
+
+    ```html
+    {% if participante.usuario.nombre == 'Pepe' %}
+        <p>{{ participante.usuario.nombre }} está en la lista de usuarios VIP.</p>
+    {% endif %}
+    ```
+
+## 2. **Operador de Desigualdad (`!=`)**
+
+- **Propósito**: Compara si dos valores son **diferentes**.
+
+- **Uso**: Se usa para mostrar un mensaje si el nombre del participante no es igual a "Pepe".
+
+- **Archivos donde se usa**:
+  - `lista_participantes.html`: Muestra un mensaje si el nombre del participante es diferente a "Pepe".
+
+    ```html
+    {% if participante.usuario.nombre != 'Pepe' %}
+        <p>{{ participante.usuario.nombre }} no está en la lista de usuarios VIP.</p>
+    {% endif %}
+    ```
+
+## 3. **Operadores de Comparación (`>`, `<`, `>=`, `<=`)**
+
+- **Propósito**: Compara si un valor es **mayor** o **menor** que otro.
+
+- **Uso**: Se utiliza para verificar si los puntos obtenidos de un participante son mayores o menores que un valor específico.
+
+- **Archivos donde se usa**:
+  - `lista_participantes.html`: Muestra un mensaje si el participante tiene más o menos de 10,000 puntos.
+
+    ```html
+    {% if participante.puntos_obtenidos > 10000 %}
+        <p style="color: green;"><strong>¡Gran puntaje!</strong></p>
+    {% elif participante.puntos_obtenidos < 10000 %}
+        <p style="color: red;"><strong>¡Puede mejorar!</strong></p>
+    {% endif %}
+    ```
+
+## 4. **Operador `for` + `if`**
+
+- **Propósito**: Permite recorrer una lista de valores y hacer comparaciones dentro del bucle.
+
+- **Uso**: En lugar de usar `in` directamente, puedes iterar sobre una lista y hacer una comparación en cada iteración.
+
+- **Archivos donde se usa**:
+  - `lista_participantes.html`: Verifica si el nombre del participante está en una lista de usuarios VIP.
+
+    ```html
+    {% for nombre in ['Pepe', 'Juan', 'Ana'] %}
+        {% if participante.usuario.nombre == nombre %}
+            <p>{{ participante.usuario.nombre }} está en la lista de usuarios VIP.</p>
+        {% endif %}
+    {% endfor %}
+    ```
+
+## 5. **Operador `default`**
+
+- **Propósito**: Proporciona un valor predeterminado si una variable no está definida o es `None`.
+
+- **Uso**: Se utiliza para mostrar un valor por defecto cuando el nombre del participante no está disponible.
+
+- **Archivos donde se usa**:
+  - `lista_participantes.html`: Muestra "Nombre no disponible" si el nombre del participante no está definido.
+
+    ```html
+    <p><strong>Nombre:</strong> {{ participante.usuario.nombre|default:"Nombre no disponible" }}</p>
+    ```
+
+
+
 
 

@@ -9,21 +9,16 @@
         {% for torneo in torneos %}
             <div>
                 <h2>{{ torneo.nombre }}</h2>
-                <p>Descripción: {{ torneo.descripcion }}</p>
-                <p>Categoría: {{ torneo.categoria }}</p>
+                <p>Descripción: {{ torneo.descripcion |escape }}</p>
+                <p>Categoría: {{ torneo.categoria|lower }}</p>
                 <p>Duración: {{ torneo.duracion }}</p>
-                <p>Fecha de Inicio: {{ torneo.fecha_inicio }}</p>
+                <p>Fecha de Inicio: {{ torneo.fecha_inicio|date:"d M Y" }}</p>
                 <h3>Participantes:</h3>
                 <ul>
                     {% for participante in torneo.participantes.all %}
-                        <li>
-                            <strong>Usuario:</strong> {{ participante.usuario.nombre }}<br>
-                            <strong>Correo:</strong> {{ participante.usuario.correo }}<br>
-                            <strong>Puntos Obtenidos:</strong> {{ participante.puntos_obtenidos }}<br>
-                            <strong>Posición Final:</strong> {{ participante.posicion_final }}<br>
-                            <strong>Fecha de Inscripción:</strong> {{ participante.fecha_inscripcion }}<br>
-                            <strong>Tiempo Jugado:</strong> {{ participante.tiempo_jugado }}<br>
-                        </li>
+                        {% include 'torneo/items/_torneo.html' %}
+                    {% empty %}
+                        <li>No hay participantes registrados en este torneo.</li>
                     {% endfor %}
                 </ul>
             </div>

@@ -6,11 +6,7 @@
     <h1>Lista de Usuarios en Primeros Lugares</h1>
     <ul>
         {% for usuario in usuarios_primeros %}
-            <li>
-                {{ usuario.nombre }} - Correo: {{ usuario.correo }} {{ usuario.clave_de_acceso }} - 
-                {{ usuario.fecha_registro }} - Ranking: {{ usuario.jugador.ranking }} - 
-                Puntos: {{ usuario.jugador.puntos }} - Torneos Ganados: {{ usuario.jugador.torneos_ganados }}
-            </li>
+            {% include 'torneo/items/_usuario_primero.html' %}
         {% endfor %}
     </ul>
 {% endblock %}
