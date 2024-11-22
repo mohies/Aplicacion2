@@ -218,12 +218,6 @@ Este proyecto utiliza varios **template tags** de Django para gestionar el conte
 
 ## Operadores Utilizados en el Proyecto
 
-Este proyecto utiliza varios operadores de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
-
-## Operadores Utilizados en el Proyecto
-
-Este proyecto utiliza varios operadores de Django en las plantillas para realizar comparaciones y controlar el flujo de la lógica de presentación. A continuación se describen los operadores utilizados, su propósito y en qué plantillas específicas se encuentran.
-
 ### 1. **Operador Menor o Igual que (`<=`)**
 
 - **Propósito**: Compara si un valor es **menor o igual** que otro.
@@ -241,71 +235,71 @@ Este proyecto utiliza varios operadores de Django en las plantillas para realiza
 
 
 
-### 2. **Operador igual (`==`)**
+### 2. **Operador Igual (`==`)**
 
-**Propósito**: Compara si dos valores son exactamente iguales.
+- **Propósito**: Compara si dos valores son exactamente iguales.
 
-**Uso**: Este operador se utiliza para verificar si un campo específico, como el nombre de un participante o el estado de un torneo, es igual a un valor determinado.
+- **Uso**: Este operador se utiliza para verificar si un campo específico, como el nombre de un participante o el estado de un torneo, es igual a un valor determinado.
 
-**Ejemplo de uso**:
+- **Ejemplo de uso**:
 
-### Comparación de nombre de participante
+  **Comparación de estado del torneo**:
+  
+  En **`estado_torneojuego.html`**, el operador `==` se utiliza para comprobar si el estado del torneo está igual a "activo", y si es cierto, muestra un mensaje indicando que el torneo está en curso.
 
-En **`estado_torneojuego.html`**, el operador `==` se utiliza para comprobar si el estado del torneo está igual a "activo", y si es cierto, muestra un mensaje indicando que el torneo está en curso.
-
-```html
-{% if torneojuego.estado == "activo" %}
-    <p>El torneo está activo y en curso.</p>
-{% endif %}
-
-
-### 3. **Operador Menor que (<)**
-
-**Propósito**: Compara si un valor es menor que otro.
-
-**Uso**: Este operador se utiliza para mostrar un mensaje si un participante tiene menos puntos que un valor determinado.
-
-**Ejemplo de uso**:
-
-En **`lista_participantes.html`**, el operador `<` se usa para mostrar un mensaje si el puntaje de un participante es menor que **1000**:
-
-```html
-{% if participante.puntos_obtenidos < 1000 %}
-    <p><strong>{{ participante.usuario.nombre }}</strong> tiene menos de 1000 puntos.</p>
-{% endif %}
-
-### 4. **Operador Mayor que (>)**
-
-**Propósito**: Compara si un valor es mayor que otro.
-
-**Uso**: Este operador se utiliza para mostrar un mensaje si un participante ha alcanzado o superado una determinada cantidad de puntos.
-
-**Ejemplo de uso**:
-
-En **`lista_participantes.html`**, el operador `>` se usa para mostrar un mensaje si el puntaje de un participante es mayor que **10000**:
-
-```html
-{% if participante.puntos_obtenidos > 10000 %}
-    <p style="color: green;"><strong>¡Gran puntaje!</strong></p>
-{% elif participante.puntos_obtenidos < 10000 %}
-    <p style="color: red;"><strong>¡Puede mejorar!</strong></p>
-{% endif %}
+  ```html
+  {% if torneojuego.estado == "activo" %}
+      <p>El torneo está activo y en curso.</p>
+  {% endif %}
 
 
-### 5. **Operador Distinto de (!=)**
+### 3. **Operador Menor que (`<`)**
 
-**Propósito**: Compara si dos valores no son iguales.
+- **Propósito**: Compara si un valor es menor que otro.
 
-**Uso**: Este operador se utiliza para mostrar un mensaje si un valor no es igual a otro, como verificar si el estado de un torneo no es "activo".
+- **Uso**: Este operador se utiliza para mostrar un mensaje si un participante tiene menos puntos que un valor determinado.
 
-**Ejemplo de uso**:
+- **Ejemplo de uso**:
 
-En **`estado_torneojuego.html`**, el operador `!=` se usa para mostrar un mensaje si el estado del torneo es **diferente de "activo"**:
+  En **`lista_participantes.html`**, el operador `<` se usa para mostrar un mensaje si el puntaje de un participante es menor que **1000**:
 
-```html
-{% if torneojuego.estado != "activo" %}
-    <span style="color: red;">Estado: Inactivo</span>
-{% endif %}
+  ```html
+  {% if participante.puntos_obtenidos < 1000 %}
+      <p><strong>{{ participante.usuario.nombre }}</strong> tiene menos de 1000 puntos.</p>
+  {% endif %}
+
+
+### 4. **Operador Mayor que (`>`)**
+
+- **Propósito**: Compara si un valor es mayor que otro.
+
+- **Uso**: Este operador se utiliza para mostrar un mensaje si un participante ha alcanzado o superado una determinada cantidad de puntos.
+
+- **Ejemplo de uso**:
+
+  En **`lista_participantes.html`**, el operador `>` se usa para mostrar un mensaje si el puntaje de un participante es mayor que **10000**:
+
+  ```html
+  {% if participante.puntos_obtenidos > 10000 %}
+      <p style="color: green;"><strong>¡Gran puntaje!</strong></p>
+  {% elif participante.puntos_obtenidos < 10000 %}
+      <p style="color: red;"><strong>¡Puede mejorar!</strong></p>
+  {% endif %}
+
+### 5. **Operador Distinto de (`!=`)**
+
+- **Propósito**: Compara si dos valores no son iguales.
+
+- **Uso**: Este operador se utiliza para mostrar un mensaje si un valor no es igual a otro, como verificar si el estado de un torneo no es "activo".
+
+- **Ejemplo de uso**:
+
+  En **`estado_torneojuego.html`**, el operador `!=` se usa para mostrar un mensaje si el estado del torneo es **diferente de "activo"**:
+
+  ```html
+  {% if torneojuego.estado != "activo" %}
+      <span style="color: red;">Estado: Inactivo</span>
+  {% endif %}
 
 
 
