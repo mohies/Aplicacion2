@@ -8,26 +8,28 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <!-- Incluyendo el menú de navegación -->
+
     {% include 'torneo/menu.html' %}
   
     <img src="{% static 'imagenes/league-of-legends.jpeg' %}" alt="Logo">
  
-    <!-- Bloque para cabecera específica de cada página -->
+ 
     {% block header %}
     <header>
         <h1>Bienvenido a Mi Aplicación</h1>
     </header>
     {% endblock %}
 
-    <!-- Bloque para el contenido principal -->
+  
     <main>
         {% block content %}
         <p>Este es el contenido principal.</p>
         {% endblock %}
     </main>
 
-    <!-- Incluyendo el pie de página -->
+
     {% include 'torneo/footer.html' %}
+
+    <script src="{% static 'javascript/script.js' %}"></script>
 </body>
 </html>
